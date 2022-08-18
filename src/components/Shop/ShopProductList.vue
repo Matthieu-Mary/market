@@ -14,7 +14,11 @@ const emit = defineEmits<{
 
 <template>
     <div class="grid p-20">
-        <ShopProduct  v-for="product in products" :product="product" @add-product-to-cart='emit("addProductToCart", $event)'/>
+        <ShopProduct  
+        v-for="product in products" 
+        :key="product.id"
+        :product="product" 
+        @add-product-to-cart='emit("addProductToCart", $event)'/>
     </div>
 </template>
 

@@ -40,6 +40,13 @@ a {
     text-decoration: none;
 }
 
+input {
+    border: var(--border);
+    border-radius: var(--border-radius);
+    padding: 8px 15px;
+}
+
+
 body {
     min-height: 100vh;
     padding:0;
@@ -95,6 +102,9 @@ body {
 }
 
 //MARGIN
+.mb-5 {
+    margin-bottom: 5px;
+}
 
 .m-10 {
     margin: 10px;
@@ -114,6 +124,10 @@ body {
 
 .mr-20 {
     margin-right: 20px;
+}
+
+.mb-20 {
+    margin-bottom: 20px;
 }
 
 .m-30 {
