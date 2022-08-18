@@ -1,9 +1,10 @@
 <script setup lang="ts">
-import type { FiltersInterface, FilterUpdate } from '@/interfaces';
+import type { Category, FiltersInterface, FilterUpdate } from '@/interfaces';
 
 
     defineProps<{
-        filters: FiltersInterface
+        filters: FiltersInterface,
+        nbrOfProducts: number
     }>()
 
     const emit = defineEmits<{
@@ -14,7 +15,7 @@ import type { FiltersInterface, FilterUpdate } from '@/interfaces';
 
 <template>
 
-<div class="p-20">
+<div class="p-20 d-flex flex-column">
 
     <section class="mb-20">
         <h3 class="mb-10">Rechercher</h3>
@@ -45,11 +46,41 @@ import type { FiltersInterface, FilterUpdate } from '@/interfaces';
 
         </div>       
     </section>
+
+    <section class="mb-20 flex-fill">
+        <h3 class="mb-10">Trier par catégories</h3>
+        <p 
+        class="category" 
+        :class="{selected : filters.category === category}"
+        v-for="category in (['all','desktop','gamer','streaming'] as Category[])"
+        @click="emit('updateFilter', { category })"
+        > 
+        {{ category }} </p>
+    </section>
+
+    <small class="mb-5">
+        Nombre de résultats : 
+        <strong> {{ nbrOfProducts }} </strong> 
+    </small>
+    <button class="btn btn-danger" @click="emit('updateFilter', {})">Supprimer les filtres</button>
+
 </div>
      
 </template>
 
 
 <style scoped lang="scss">
+    .category {
+        font-size: 14px;
+        line-height: 18px;
+        cursor: pointer;
+        &:hover {
+            text-decoration: underline;
+        }
+    }
 
+    .selected {
+        text-decoration: underline;
+        font-weight: bold;
+    }
 </style>
