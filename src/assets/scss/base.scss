@@ -36,16 +36,22 @@ img {
 }
 
 a {
+    cursor: pointer;
     color: var(--text-color);
     text-decoration: none;
 }
 
-input {
+input, textarea, select {
     border: var(--border);
     border-radius: var(--border-radius);
     padding: 8px 15px;
 }
 
+label {
+    font-size: 14px;
+    font-weight:500 ;
+    color: var(--gray-3);
+}
 
 body {
     min-height: 100vh;
@@ -54,6 +60,12 @@ body {
     font-family: var(--font-family);
     color: var(--text-color);
     background-color: var(--gray-1);
+}
+
+.form-error {
+    color:var(--danger-1);
+    font-size: 14px;
+    font-weight: 500;
 }
 
 //FLEX
@@ -167,4 +179,13 @@ body {
     &:hover {
         background-color: var(--danger-2);
     }
+}
+
+// CARD
+
+.card {
+    border: var(--border);
+    border-radius: vat(--border-radius);
+    background-color: white;
+    padding: 30px;
 }

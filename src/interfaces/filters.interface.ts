@@ -1,4 +1,4 @@
-export type Category = 'gamer' | 'bureau' | 'streaming' | 'all'
+import type { Category } from "./type";
 
 export interface FiltersInterface {
     search: string;

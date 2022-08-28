@@ -1,4 +1,14 @@
 <script setup lang="ts">
+import type { Page } from '../interfaces/index';
+
+
+    defineProps<{
+        page: Page
+    }>()
+
+    const emit = defineEmits<{
+        (e: 'navigate', page: Page): void
+    }>()
 
 </script>
 
@@ -10,10 +20,10 @@
         </a>
         <ul class="d-flex flex-row flex-fill">
             <li class="mr-10">
-                <a href="/">Boutique</a>
+                <a :class="{ active: page === 'Boutique' }" @click="emit('navigate', 'Boutique')">Boutique</a>
             </li>
             <li>
-                <a href="/">Admin</a>
+                <a :class="{ active: page === 'Admin' }" @click="emit('navigate', 'Admin')">Admin</a>
             </li>
         </ul>
         <ul class="d-flex flex-row">
@@ -41,6 +51,9 @@
                 font-weight: 700;
                 font-size: 20px;
             }
+        }
+        a.active {
+            text-decoration: underline;
         }
 
         ul {
