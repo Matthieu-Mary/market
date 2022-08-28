@@ -7,10 +7,10 @@ import type { ProductCartInterface } from "@/interfaces";
     }>()
 
     const emit = defineEmits<{
-        (e: 'removeProductFromCart', productId: number): void
+        (e: 'removeProductFromCart', productId: string): void
     }>()
 
-    console.log(product);
+    console.log(props.product);
 
 </script>
 
@@ -20,7 +20,7 @@ import type { ProductCartInterface } from "@/interfaces";
         <strong class="mr-10">{{ props.product.title }}</strong>
         <span class="flex-fill mr-10">x {{ props.product.quantity }}</span>
         <span class="mr-10">{{ props.product.price }}€</span>
-        <button class="btn btn-danger" @click="emit('removeProductFromCart', props.product.id)">Supprimer</button>
+        <button class="btn btn-danger" @click="emit('removeProductFromCart', props.product._id)">Supprimer</button>
     </div>
 
 </template>

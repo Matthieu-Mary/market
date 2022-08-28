@@ -9,7 +9,7 @@ defineProps<{
 }>()
 
 const emit = defineEmits<{
-    (e: 'addProductToCart', productId: number):void
+    (e: 'addProductToCart', productId: string):void
     (e: 'updateFilter', updateFilter: FilterUpdate):void
 }>()
 
@@ -24,7 +24,7 @@ const emit = defineEmits<{
         @update-filter="emit('updateFilter', $event)" 
         />
         <ShopProductList 
-        class="flex-fill" 
+        class="flex-fill scrollable" 
         :products="products" 
         @add-product-to-cart='emit("addProductToCart", $event)' 
         />
@@ -33,6 +33,11 @@ const emit = defineEmits<{
 
 
 <style scoped lang="scss">
+
+.scrollable {
+    overflow-y: auto;
+    height: calc(100vh - 96px);
+}
 .shop-filter {
     flex: 0 0 200px;
 }

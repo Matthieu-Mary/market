@@ -15,14 +15,20 @@ const state = reactive<{
     cart: ProductCartInterface[],
     filters: FiltersInterface
 }>({
-    products: data,
+    products: [],
     cart: [],
     filters: {...DEFAULT_FILTERS}
 })
 
+const products = await (await fetch(`https://restapi.fr/api/projetProducts`)).json()
+if(Array.isArray(products)) {
+    state.products = products
+} else {
+    state.products = [products];
+}
 
 // AJOUTER UN PRODUIT AU PANIER VIA L'ID
-function addProductToCart(productId: number): void {
+function addProductToCart(productId: string): void {
   const product = state.products.find((product) => product._id === productId);
   if (product) {
     const productInCart = state.cart.find(product => product._id === productId)
@@ -36,7 +42,7 @@ function addProductToCart(productId: number): void {
 }
 
 //SUPPRIMER UN PRODUIT DU PANIER VIA L'ID
-function removeProductFromCart(productId: number): void {
+function removeProductFromCart(productId: string): void {
   const productFromCart = state.cart.find(product => product._id === productId)
   console.log("delete");
   if (productFromCart) {
@@ -115,5 +121,9 @@ function updateFilter(filterUpdate: FilterUpdate) {
     .cart {
         background-color: white;
         border-left: var(--border);
+    }
+
+    .shop {
+        
     }
 </style>

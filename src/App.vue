@@ -10,7 +10,7 @@ import { seed } from "./data/seed";
 const state = reactive<{
     page: Page
 }>({
-    page: 'Admin'
+    page: 'Boutique'
 })
 
 const pages: { [s: string]: C } = {
@@ -32,7 +32,9 @@ function navigate(page: Page): void {
 
         <TheHeader @navigate="navigate" :page="state.page" class="header" />
         <div class="app-content">
-            <Component :is="pages[state.page]" />
+            <Suspense>
+                <Component :is="pages[state.page]" />
+            </Suspense>
         </div>
         <TheFooter class="footer"/>
 
@@ -45,7 +47,7 @@ function navigate(page: Page): void {
 @import "./assets/scss/debug.scss";
 
     .app-container {
-        min-height: 100vh;
+        height: 100vh;
         display: grid;
         grid-template-areas: 'header' 'app-content' 'footer';
         grid-template-rows: 48px auto 48px;

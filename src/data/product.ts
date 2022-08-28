@@ -1,5 +1,3 @@
-import type { ProductInterface } from "@/interfaces/product.interface";
-
 export default [
     {
       image: 'src/assets/images/macbook-pro.avif',
@@ -65,4 +63,4 @@ export default [
       price: 899,
       category: 'desktop'
     },
-  ] as ProductInterface[]
+  ] 

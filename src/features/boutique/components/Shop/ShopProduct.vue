@@ -6,7 +6,7 @@ import type { ProductInterface } from "@/interfaces"
     }>()
 
    const emit = defineEmits<{
-        (e: 'addProductToCart', productId: number):void
+        (e: 'addProductToCart', productId: string): void
     }>()
 
 </script>
@@ -19,7 +19,7 @@ import type { ProductInterface } from "@/interfaces"
             <p>{{ product.description }}</p>
             <div class="d-flex align-items-center">
                 <strong class="flex-fill">{{ product.price }}€</strong>
-                <button @click="emit('addProductToCart', product.id)" class="btn btn-primary">Ajouter au panier</button>
+                <button @click="emit('addProductToCart', product._id)" class="btn btn-primary">Ajouter au panier</button>
             </div>
         </div>
     </div>
